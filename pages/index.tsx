@@ -18,13 +18,13 @@ const Home: NextPage = () => {
         />
 
         {/* Google / Search Engine Tags */}
-        <meta itemprop="name" content="Tanager Mint Page" />
+        <meta itemProp="name" content="Tanager Mint Page" />
         <meta
-          itemprop="description"
+          itemProp="description"
           content="2022 年开始，很多传统大品牌与名人都开始发行自己的 NFT ，用来与他们的用户与粉丝互动，NFT 真的能解决他们这几年来停滞不前的营销难题吗？阅读我们的文章告诉你答案。"
         />
         <meta
-          itemprop="image"
+          itemProp="image"
           content="https://tanagerdigital.github.io/nftminter/images/logo.png"
         />
 

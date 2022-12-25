@@ -27,14 +27,14 @@
   float: left;
   margin-top: calc(100vw * 72 / 1440);
   margin-left: calc(100vw * 44 / 1440);
-  background-image: url('/images/opensea.png');
+  background-image: url('/nftminter/imagesopensea.png');
 }
 
 .topRight {
   float: right;
   margin-top: calc(100vw * 72 / 1440);
   margin-right: calc(100vw * 67 / 1440);
-  background-image: url('/images/mirror.png');
+  background-image: url('/nftminter/imagesmirror.png');
 }
 
 .bottomLeft {
@@ -42,7 +42,7 @@
   margin-top: calc(100vw * (810 - 47) / 1440);
   transform: translate(0, -100%);
   margin-left: calc(-100vw * 102 / 1440);
-  background-image: url('/images/github.png');
+  background-image: url('/nftminter/imagesgithub.png');
 }
 
 .bottomRight {
@@ -50,7 +50,7 @@
   margin-top: calc(100vw * (810 - 47) / 1440);
   transform: translate(0, -100%);
   margin-right: calc(-100vw * 102 / 1440);
-  background-image: url('/images/twitter.png');
+  background-image: url('/nftminter/imagestwitter.png');
 }
 
 .bottomCenter {
@@ -58,7 +58,7 @@
   margin-top: calc(100vw * (810 - 23) / 1440);
   transform: translate(0, -100%);
   margin-left: calc(50vw - 100vw * (102 + 44) / 1440);
-  background-image: url('/images/arrow_down.png');
+  background-image: url('/nftminter/imagesarrow_down.png');
 }
 
 .content {
@@ -68,7 +68,7 @@
   justify-content: center;
   align-items: center;
 
-  background: url('/images/bg_tanager.png');
+  background: url('/nftminter/imagesbg_tanager.png');
   background-repeat: no-repeat;
   background-size: contain;
   width: 100%;

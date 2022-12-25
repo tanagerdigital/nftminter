@@ -8,7 +8,12 @@ const Person = ({ person }) => {
 
   return (
     <div className={style.person} onClick={handleClick}>
-      <Image src="/images/twitter_black.png" alt="" width="30" height="30" />
+      <Image
+        src="/nftminter/imagestwitter_black.png"
+        alt=""
+        width="30"
+        height="30"
+      />
       <span>{person.name}</span>
     </div>
   )

@@ -1,5 +1,67 @@
-.content {
+.corners {
   top: 80px;
+  width: 100%;
+  display: flex;
+}
+
+.corner_button {
+  position: relative;
+  z-index: 300;
+  width: calc(100vw * 102 / 1440);
+  height: calc(100vw * 148 / 1440);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.arrow_button {
+  position: relative;
+  z-index: 300;
+  width: calc(100vw * 38 / 1440);
+  height: calc(100vw * 55 / 1440);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.topLeft {
+  float: left;
+  margin-top: calc(100vw * 72 / 1440);
+  margin-left: calc(100vw * 44 / 1440);
+  background-image: url('/images/opensea.png');
+}
+
+.topRight {
+  float: right;
+  margin-top: calc(100vw * 72 / 1440);
+  margin-right: calc(100vw * 67 / 1440);
+  background-image: url('/images/mirror.png');
+}
+
+.bottomLeft {
+  float: left;
+  margin-top: calc(100vw * (810 - 47) / 1440);
+  transform: translate(0, -100%);
+  margin-left: calc(-100vw * 102 / 1440);
+  background-image: url('/images/github.png');
+}
+
+.bottomRight {
+  float: right;
+  margin-top: calc(100vw * (810 - 47) / 1440);
+  transform: translate(0, -100%);
+  margin-right: calc(-100vw * 102 / 1440);
+  background-image: url('/images/twitter.png');
+}
+
+.bottomCenter {
+  float: left;
+  margin-top: calc(100vw * (810 - 23) / 1440);
+  transform: translate(0, -100%);
+  margin-left: calc(50vw - 100vw * (102 + 44) / 1440);
+  background-image: url('/images/arrow_down.png');
+}
+
+.content {
+  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -16,27 +78,34 @@
   position: relative;
 }
 
-.button_wrapper {
-  
-}
-
 .title {
   font-family: 'Baloo 2';
   font-style: normal;
   font-weight: 600;
-  font-size: 80px;
-  line-height: 128px;
+  font-size: calc(100vw * 80 / 1440);
+  line-height: calc(100vw * 128 / 1440);
   
   color: #000000;
 }
 
+.button_wrapper {
+  background: #000000;
+  border: 3px solid #000000;
+  border-radius: 57px;
+}
+
 .button {
-  font-size: 60px;
-  line-height: 96px;
+  margin-left: -6px;
+  margin-top: -6px;
+  font-size: calc(100vw * 60 / 1440);
+  line-height: calc(100vw * 96 / 1440);
   white-space: nowrap;
   cursor: pointer;
 
-  padding: 11px 74px 9px 74px;
+  padding-top: 11px; 
+  padding-left: calc(100vw * 74 / 1440);
+  padding-bottom: 9px;
+  padding-right: calc(100vw * 74 / 1440);
 
   background: linear-gradient(94.03deg, #2DFF8D 7.39%, #E3F13B 98.01%);
   border-radius: 57px;

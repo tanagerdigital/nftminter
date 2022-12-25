@@ -1,9 +1,9 @@
 import style from './mint.module.css'
 
 const platformUrls = [
-  'https://twitter.com/tanager2022',
-  'https://twitter.com/tanager2022',
-  'https://twitter.com/tanager2022',
+  'https://medium.com/@tanagerdigital',
+  'https://mirror.xyz/0x2cE37FE0723b15D59Cc3adb843D3f79baec47333',
+  'https://github.com/tanagerdigital/nftminter',
   'https://twitter.com/tanager2022',
 ]
 

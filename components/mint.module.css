@@ -4,6 +4,7 @@
 }
 
 .corner_button {
+  cursor: pointer;
   position: relative;
   z-index: 300;
   width: calc(100vw * 102 / 1440);
@@ -13,6 +14,7 @@
 }
 
 .arrow_button {
+  cursor: pointer;
   position: relative;
   z-index: 300;
   width: calc(100vw * 38 / 1440);

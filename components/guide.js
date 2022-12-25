@@ -18,16 +18,16 @@ const steps = [
     title: '4. Get to know Tanager and our Core Developers',
     person: [
       {
-        name: 'Tanager2022',
-        url: '',
+        name: '@tanager2022',
+        url: 'https://twitter.com/tanager2022',
       },
       {
-        name: 'Kun.liu',
-        url: '',
+        name: '@KunLiu_xyz',
+        url: 'https://twitter.com/KunLiu_xyz',
       },
       {
-        name: 'Zhenyu',
-        url: '',
+        name: '@0xNomadJames',
+        url: 'https://twitter.com/0xNomadJames',
       },
     ],
   },

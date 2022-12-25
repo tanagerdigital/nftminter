@@ -1,0 +1,44 @@
+.content {
+  top: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: url('/images/bg_tanager.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 100%;
+  height:calc(100vw * 810.0 / 1440.0);
+}
+
+.background {
+  position: relative;
+}
+
+.button_wrapper {
+  
+}
+
+.title {
+  font-family: 'Baloo 2';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 80px;
+  line-height: 128px;
+  
+  color: #000000;
+}
+
+.button {
+  font-size: 60px;
+  line-height: 96px;
+  white-space: nowrap;
+  cursor: pointer;
+
+  padding: 11px 74px 9px 74px;
+
+  background: linear-gradient(94.03deg, #2DFF8D 7.39%, #E3F13B 98.01%);
+  border-radius: 57px;
+  border: 3px solid #000000;
+}

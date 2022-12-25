@@ -26,3 +26,16 @@
   
   color: rgba(0, 0, 0, 0.5);
 }
+
+.persons {
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 60px;
+}
+
+.person {
+  display: flex;
+  justify-content: flex-start;
+  gap: 12px;
+}

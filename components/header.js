@@ -8,7 +8,7 @@ const Header = () => {
       <div className={style.titleWrapper}>
         <Image
           src="/images/logo.png"
-          alt="Vercel Logo"
+          alt="Tanager Logo"
           width={47}
           height={47}
         />

@@ -7,7 +7,7 @@ const Header = () => {
     <nav className="flex justify-between items-center py-4 mx-auto">
       <div className={style.titleWrapper}>
         <Image
-          src="/images/logo.png"
+          src="/nftminter/images/logo.png"
           alt="Tanager Logo"
           width={47}
           height={47}

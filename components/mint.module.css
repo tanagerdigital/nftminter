@@ -1,7 +1,6 @@
 .corners {
   top: 80px;
   width: 100%;
-  display: flex;
 }
 
 .corner_button {

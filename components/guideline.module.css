@@ -1,0 +1,28 @@
+.guideline {
+  
+}
+
+/* .guideline > div:last-child {
+  margin-bottom: 140px;
+} */
+
+.title {
+  font-family: 'Baloo 2';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 48px;
+  
+  color: #000000;
+}
+
+.desc {
+  margin-top: 16px;
+  font-family: 'Baloo 2';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 32px;
+  
+  color: rgba(0, 0, 0, 0.5);
+}

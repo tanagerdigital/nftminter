@@ -26,7 +26,7 @@
   "rules": {
     "prefer-const": "error",
     "react/react-in-jsx-scope": "off",
-    "no-console": "error",
+    // "no-console": "error",
     "eqeqeq": "error",
     "unused-imports/no-unused-imports": "error",
     "import/order": [

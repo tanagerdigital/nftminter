@@ -11,7 +11,7 @@ const Header = () => {
     try {
       setLoading(true)
       const address = await connectEthers()
-      setAddress(address)
+      setAddress(address.replace(address.substring(8, 38), '*******'))
       console.log('set addr: ', address)
       setLoading(false)
     } catch (error) {

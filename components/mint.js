@@ -1,3 +1,4 @@
+import { getBalance, mint } from '../pages/api/web3Bridge'
 import style from './mint.module.css'
 
 const platformUrls = [
@@ -21,11 +22,23 @@ const MintPage = () => {
     console.log('down')
   }
 
+  async function handleMint() {
+    try {
+      await mint()
+      const balance = await getBalance()
+      console.log('balance:', balance)
+      alert(`balance: ${balance}`)
+    } catch (error) {
+      console.log('mint error:', error)
+      alert(error)
+    }
+  }
+
   return (
     <div className="corners">
       <div className={style.content}>
         <div className={style.title}>Tanager</div>
-        <div className={style.button_wrapper}>
+        <div className={style.button_wrapper} onClick={handleMint}>
           <div className={`${style.title} ${style.button}`}>
             Mint your 1st NFT
           </div>

@@ -16,7 +16,8 @@
 
 .connect_button {
   margin-right: 105px;
-  width: 204px;
+  padding: 0 40px 0 40px;
+  width: 180px;
   height: 44px;
 
   background: #96FF9A;
@@ -29,6 +30,8 @@
   font-size: 20px;
   line-height: 32px;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   color: #000000;
 

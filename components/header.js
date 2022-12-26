@@ -1,8 +1,24 @@
 import Image from 'next/image'
-import { connectWallet } from '../pages/api/web3Bridge'
+import { useState } from 'react'
+import { connectEthers } from '../pages/api/web3Bridge'
 import style from './header.module.css'
 
 const Header = () => {
+  const [address, setAddress] = useState('Connect Wallet')
+  const [loading, setLoading] = useState(false)
+
+  async function connectWallet() {
+    try {
+      setLoading(true)
+      const address = await connectEthers()
+      setAddress(address)
+      console.log('set addr: ', address)
+      setLoading(false)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <nav className="flex justify-between items-center py-4 mx-auto">
       <div className={style.titleWrapper}>
@@ -16,7 +32,7 @@ const Header = () => {
       </div>
 
       <button className={style.connect_button} onClick={connectWallet}>
-        Connect Wallet
+        {address}
       </button>
     </nav>
   )

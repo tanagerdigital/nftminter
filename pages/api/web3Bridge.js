@@ -15,6 +15,15 @@ async function start() {
 
     //check the chain id
     // $('#network').html((await provider.getNetwork()).name)
+    const network = await provider.getNetwork()
+    const chainId = network.chainId
+    const networkName = network.name
+    if (chainId !== 80001) {
+      alert(
+        `Unsupported ChainID: ${chainId}.Supported ChainID: 80001. Mumbai Test Network.`,
+      )
+      return
+    }
 
     //set signer address & network
     window.signer = signer

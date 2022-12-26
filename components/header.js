@@ -15,6 +15,8 @@ const Header = () => {
       console.log('set addr: ', address)
       setLoading(false)
     } catch (error) {
+      setAddress('Connect Wallet')
+      setLoading(false)
       console.log(error)
     }
   }

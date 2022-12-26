@@ -27,7 +27,6 @@ const MintPage = () => {
       await mint()
       const balance = await getBalance()
       console.log('balance:', balance)
-      alert(`balance: ${balance}`)
     } catch (error) {
       console.log('mint error:', error)
       alert(error)

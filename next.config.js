@@ -13,4 +13,8 @@ module.exports = {
     loader: 'akamai',
     path: '',
   },
+  env: {
+    walletConnectProjectId: process.env.walletConnectProjectId,
+    infuraId: process.env.infuraId,
+  },
 }

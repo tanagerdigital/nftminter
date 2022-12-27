@@ -1,4 +1,11 @@
-import { getBalance, mint } from '../pages/api/web3Bridge'
+import {
+  useNetwork,
+  useContract,
+  useProvider,
+  useSigner,
+  useContractEvent,
+} from 'wagmi'
+import { tanager101_abi, tanager101_address } from '../pages/api/abi_address.js'
 import style from './mint.module.css'
 
 const platformUrls = [
@@ -22,11 +29,37 @@ const MintPage = () => {
     console.log('down')
   }
 
+  const { chain } = useNetwork()
+  const provider = useProvider()
+  const { data: signer, isError, isLoading } = useSigner()
+  const tanager101 = useContract({
+    address: tanager101_address,
+    abi: tanager101_abi,
+    signerOrProvider: provider,
+  })
+
+  useContractEvent({
+    address: tanager101_address,
+    abi: tanager101_abi,
+    eventName: 'Transfer',
+    listener(node, label, owner) {
+      console.log('Transfer event:', node, label, owner)
+    },
+  })
+
   async function handleMint() {
+    console.log('handleMint')
+    console.log('chain:', chain)
+    if (chain && chain.id !== 80001) {
+      alert(
+        `Unsupported Chain: ${chain.name}(${chain.id}).Supported ChainID: 80001. Mumbai Test Network.`,
+      )
+      return
+    }
     try {
-      await mint()
-      const balance = await getBalance()
-      console.log('balance:', balance)
+      const contract = tanager101.connect(signer)
+      console.log('contract:', contract)
+      await contract.mint()
     } catch (error) {
       console.log('mint error:', error)
       alert(error)

@@ -1,23 +1,30 @@
 import Image from 'next/image'
-import { useState } from 'react'
-import { connectEthers } from '../pages/api/web3Bridge'
+import { useAccount, useConnect, useDisconnect } from 'wagmi'
+import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
+
 import style from './header.module.css'
 
-const Header = () => {
-  const [address, setAddress] = useState('Connect Wallet')
-  const [loading, setLoading] = useState(false)
+const truncateAddress = (address) => {
+  return address.slice(0, 6) + '...' + address.slice(-4)
+}
 
-  async function connectWallet() {
-    try {
-      setLoading(true)
-      const address = await connectEthers()
-      setAddress(address.replace(address.substring(8, 38), '*******'))
-      console.log('set addr: ', address)
-      setLoading(false)
-    } catch (error) {
-      setAddress('Connect Wallet')
-      setLoading(false)
-      console.log(error)
+const Header = () => {
+  const { address, isConnected } = useAccount()
+  const connector = new WalletConnectConnector({
+    options: {
+      qrcode: true,
+    },
+  })
+  const { connect } = useConnect({
+    connector: connector,
+  })
+  const { disconnect } = useDisconnect()
+
+  function connectWallet() {
+    if (isConnected) {
+      disconnect()
+    } else {
+      connect()
     }
   }
 
@@ -32,9 +39,8 @@ const Header = () => {
         />
         <span className={style.header_title}>Tanager</span>
       </div>
-
-      <button className={style.connect_button} onClick={connectWallet}>
-        {address}
+      <button className={style.connect_button} onClick={() => connectWallet()}>
+        {isConnected ? truncateAddress(address) : 'Connect Wallet'}
       </button>
     </nav>
   )

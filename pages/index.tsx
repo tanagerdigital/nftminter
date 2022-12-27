@@ -1,8 +1,11 @@
+import { Web3Modal } from '@web3modal/react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import { WagmiConfig } from 'wagmi'
 import GuidePage from '../components/guide'
 import Header from '../components/header'
 import MintPage from '../components/mint'
+import { wagmiClient, ethereumClient } from '../pages/api/web3'
 import style from './index.module.css'
 
 const Home: NextPage = () => {
@@ -56,13 +59,21 @@ const Home: NextPage = () => {
           content="https://tanagerdigital.github.io/nftminter/images/logo.png"
         />
       </Head>
-      <div className={style.header}>
-        <Header />
-        <main className="main">
-          <MintPage />
-          <GuidePage />
-        </main>
-      </div>
+
+      <WagmiConfig client={wagmiClient}>
+        <div className={style.header}>
+          <Header />
+          <main className="main">
+            <MintPage />
+            <GuidePage />
+          </main>
+        </div>
+      </WagmiConfig>
+
+      <Web3Modal
+        projectId={process.env.walletConnectProjectId}
+        ethereumClient={ethereumClient}
+      ></Web3Modal>
     </div>
   )
 }

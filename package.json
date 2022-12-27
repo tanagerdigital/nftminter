@@ -3,6 +3,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "deploy": "next build && next export && git add out/ && touch out/.nojekyll && git add out/.nojekyll && git commit -m \"Deploy gh-pages\" && git subtree push --prefix out origin gh-pages",
     "start": "next start",
     "prepare": "husky install",
     "lint": "eslint --fix",
@@ -10,7 +11,6 @@
   },
   "dependencies": {
     "clsx": "^1.2.1",
-    "dotenv": "^16.0.3",
     "ethers": "^5.7.2",
     "next": "latest",
     "react": "18.2.0",

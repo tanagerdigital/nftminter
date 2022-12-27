@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import { useAccount, useConnect, useDisconnect } from 'wagmi'
-import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
 
 import style from './header.module.css'
 
@@ -10,21 +9,16 @@ const truncateAddress = (address) => {
 
 const Header = () => {
   const { address, isConnected } = useAccount()
-  const connector = new WalletConnectConnector({
-    options: {
-      qrcode: true,
-    },
-  })
-  const { connect } = useConnect({
-    connector: connector,
-  })
+  const { connect, connectors } = useConnect()
   const { disconnect } = useDisconnect()
 
   function connectWallet() {
     if (isConnected) {
       disconnect()
     } else {
-      connect()
+      const connector = connectors.pop()
+      console.log('connector:', connector)
+      connect({ connector })
     }
   }
 

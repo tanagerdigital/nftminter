@@ -34,7 +34,6 @@ const Desc = ({ desc }) => {
 }
 
 const Guideline = ({ step }) => {
-  console.log('step.person: ', step.person)
   let detail
   if (step.person !== undefined) {
     detail = <Persons persons={step.person} />

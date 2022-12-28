@@ -1,11 +1,10 @@
 import {
   useNetwork,
-  useContract,
-  useProvider,
-  useSigner,
-  useContractEvent,
+  usePrepareContractWrite,
+  useContractWrite,
+  useWaitForTransaction,
 } from 'wagmi'
-import { tanager101_abi, tanager101_address } from '../pages/api/abi_address.js'
+import { tanager101_address } from '../pages/api/abi_address'
 import style from './mint.module.css'
 
 const platformUrls = [
@@ -30,21 +29,23 @@ const MintPage = () => {
   }
 
   const { chain } = useNetwork()
-  const provider = useProvider()
-  const { data: signer, isError, isLoading } = useSigner()
-  const tanager101 = useContract({
+  const { config } = usePrepareContractWrite({
     address: tanager101_address,
-    abi: tanager101_abi,
-    signerOrProvider: provider,
+    abi: [
+      {
+        name: 'mint',
+        type: 'function',
+        stateMutability: 'nonpayable',
+        inputs: [],
+        outputs: [],
+      },
+    ],
+    functionName: 'mint',
   })
+  const { data, write } = useContractWrite(config)
 
-  useContractEvent({
-    address: tanager101_address,
-    abi: tanager101_abi,
-    eventName: 'Transfer',
-    listener(node, label, owner) {
-      console.log('Transfer event:', node, label, owner)
-    },
+  const { isLoading, isSuccess } = useWaitForTransaction({
+    hash: data?.hash,
   })
 
   async function handleMint() {
@@ -57,9 +58,8 @@ const MintPage = () => {
       return
     }
     try {
-      const contract = tanager101.connect(signer)
-      console.log('contract:', contract)
-      await contract.mint()
+      console.log('mint:', write)
+      write?.()
     } catch (error) {
       console.log('mint error:', error)
       alert(error)
@@ -70,10 +70,19 @@ const MintPage = () => {
     <div className="corners">
       <div className={style.content}>
         <div className={style.title}>Tanager</div>
-        <div className={style.button_wrapper} onClick={handleMint}>
+        <div
+          className={style.button_wrapper}
+          disabled={!write || isLoading}
+          onClick={handleMint}
+        >
           <div className={`${style.title} ${style.button}`}>
             Mint your 1st NFT
           </div>
+        </div>
+        <div hidden={!isSuccess}>
+          <a href={`https://mumbai.polygonscan.com/tx/${data?.hash}`}>
+            Check transaction
+          </a>
         </div>
       </div>
       <div

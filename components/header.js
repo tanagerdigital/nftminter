@@ -1,6 +1,7 @@
 import Image from 'next/image'
-import { useAccount, useConnect, useDisconnect } from 'wagmi'
-
+import * as React from 'react'
+import { useAccount, useDisconnect } from 'wagmi'
+import ConnectorOptionsDialog from './connectorOptionsDialog'
 import style from './header.module.css'
 
 const truncateAddress = (address) => {
@@ -8,17 +9,20 @@ const truncateAddress = (address) => {
 }
 
 const Header = () => {
+  const [open, setOpen] = React.useState(false)
   const { address, isConnected } = useAccount()
-  const { connect, connectors } = useConnect()
   const { disconnect } = useDisconnect()
+
+  const handleClose = () => {
+    setOpen(false)
+  }
 
   function connectWallet() {
     if (isConnected) {
       disconnect()
+      setOpen(false)
     } else {
-      const connector = connectors.pop()
-      console.log('connector:', connector)
-      connect({ connector })
+      setOpen(true)
     }
   }
 
@@ -36,6 +40,7 @@ const Header = () => {
       <button className={style.connect_button} onClick={() => connectWallet()}>
         {isConnected ? truncateAddress(address) : 'Connect Wallet'}
       </button>
+      <ConnectorOptionsDialog open={open} onClose={handleClose} />
     </nav>
   )
 }

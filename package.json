@@ -10,6 +10,10 @@
     "format": "prettier --write"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "^5.11.0",
+    "@mui/material": "^5.11.2",
     "@web3modal/ethereum": "^2.0.0-rc.1",
     "@web3modal/html": "^2.0.0-rc.1",
     "@web3modal/react": "^2.0.0-rc.1",

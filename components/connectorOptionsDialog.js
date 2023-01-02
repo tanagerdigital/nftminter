@@ -78,8 +78,8 @@ export default function ConnectorOptionsDialog(props) {
   return (
     <ThemeProvider theme={theme}>
       <Dialog maxWidth="true" open={open} onClose={onClose}>
-        <BootstrapDialogTitle className={style.title} onClose={onClose}>
-          Connect a wallet
+        <BootstrapDialogTitle onClose={onClose}>
+          <span className={style.title}>Connect a wallet</span>
         </BootstrapDialogTitle>
         <DialogContent>
           <Stack spacing={2}>

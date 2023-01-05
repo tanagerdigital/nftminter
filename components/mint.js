@@ -1,10 +1,12 @@
+import { ethers } from 'ethers'
 import {
   useNetwork,
   usePrepareContractWrite,
   useContractWrite,
   useWaitForTransaction,
+  useContractEvent,
 } from 'wagmi'
-import { tanager101_address } from '../pages/api/abi_address'
+import { tanager101_abi, tanager101_address } from '../pages/api/abi_address'
 import style from './mint.module.css'
 
 const platformUrls = [
@@ -44,8 +46,25 @@ const MintPage = () => {
   })
   const { data, write } = useContractWrite(config)
 
-  const { isLoading, isSuccess } = useWaitForTransaction({
+  const {
+    data: transactionReceipt,
+    isLoading,
+    isSuccess,
+  } = useWaitForTransaction({
     hash: data?.hash,
+  })
+
+  useContractEvent({
+    address: tanager101_address,
+    abi: tanager101_abi,
+    eventName: 'Transfer',
+    listener(node, label, owner) {
+      console.log('Transfer event:', node, ', label:', label, ', owner:', owner)
+      const index = ethers.utils.formatUnits(owner, 0)
+      window.open(
+        `https://testnets.opensea.io/assets/mumbai/0x681e419ef87ed964ccd7c3b6425361df23639276/${index}`,
+      )
+    },
   })
 
   async function handleMint() {

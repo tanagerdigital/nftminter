@@ -1,4 +1,6 @@
+import { Link } from '@mui/material'
 import Image from 'next/image'
+import { format } from 'react-string-format'
 import style from './guideline.module.css'
 
 const Person = ({ person }) => {
@@ -37,6 +39,19 @@ const Guideline = ({ step }) => {
   let detail
   if (step.person !== undefined) {
     detail = <Persons persons={step.person} />
+  } else if (step.link !== undefined) {
+    detail = (
+      <div className={style.desc}>
+        {format(
+          step.desc,
+          <span>{step.texts[0]}</span>,
+          <Link href={step.link} className={style.link}>
+            {step.texts[1]}
+          </Link>,
+          <span>{step.texts[2]}</span>,
+        )}
+      </div>
+    )
   } else {
     detail = <Desc desc={step.desc} />
   }

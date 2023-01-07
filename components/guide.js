@@ -12,7 +12,13 @@ const steps = [
   },
   {
     title: '3. Read our articles about NFT and marketing',
-    desc: 'Since 2022, many traditional big brands and celebrities have issued their own NFTs to engage with their subscribers and fans. However, can NFTs solve their marketing challenges that have been stagnant for years? Could you read our article <xxx > to find out? ',
+    desc: '{0}{1}{2}',
+    texts: [
+      'Since 2022, With the launch of several successful NFT-based marketing campaigns, brands are now looking to leverage them to reach a larger and more engaged audience. Could you read our article ',
+      "<Issuing NFTs won't be the cure for marketing unless you define the right question first>",
+      ' to find out more about the potential of NFTs for marketing? By understanding the advantages and disadvantages of these tokens, you can make an informed decision on whether or not to incorporate NFTs into your marketing strategy.',
+    ],
+    link: 'https://medium.com/@tanagerdigital/issuing-nfts-wont-be-the-cure-for-marketing-unless-you-define-the-right-question-first-ba5b5b5de081',
   },
   {
     title: '4. Get to know Tanager and our Core Developers',

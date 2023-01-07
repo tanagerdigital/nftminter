@@ -45,7 +45,7 @@ const Guideline = ({ step }) => {
         {format(
           step.desc,
           <span>{step.texts[0]}</span>,
-          <Link href={step.link} className={style.link}>
+          <Link href={step.link} color="#05E10C">
             {step.texts[1]}
           </Link>,
           <span>{step.texts[2]}</span>,

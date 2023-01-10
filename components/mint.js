@@ -1,3 +1,4 @@
+import CircularProgress from '@mui/material/CircularProgress'
 import { ethers } from 'ethers'
 import {
   useNetwork,
@@ -38,7 +39,7 @@ const MintPage = () => {
   })
   const { data, write } = useContractWrite(config)
 
-  const { isLoading } = useWaitForTransaction({
+  const { isLoading, isSuccess } = useWaitForTransaction({
     hash: data?.hash,
   })
 
@@ -73,7 +74,7 @@ const MintPage = () => {
   }
 
   return (
-    <div className="corners">
+    <div className={style.corners}>
       <div className={style.content}>
         <div className={style.title}>Tanager</div>
         <div
@@ -84,6 +85,9 @@ const MintPage = () => {
           <div className={`${style.title} ${style.button}`}>
             Mint your 1st NFT
           </div>
+        </div>
+        <div className="flex justify-center items-center mt-8">
+          <CircularProgress hidden={!isLoading} color="success" />
         </div>
       </div>
       <div

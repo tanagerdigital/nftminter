@@ -37,7 +37,13 @@ const MintPage = () => {
     abi: tanager101_abi,
     functionName: 'mint',
   })
-  const { data, write } = useContractWrite(config)
+  const { data, write } = useContractWrite({
+    ...config,
+    onError(error) {
+      console.log('Error', error)
+      alert(error)
+    },
+  })
 
   const { isLoading, isSuccess } = useWaitForTransaction({
     hash: data?.hash,

@@ -33,24 +33,12 @@ const MintPage = () => {
   const { chain } = useNetwork()
   const { config } = usePrepareContractWrite({
     address: tanager101_address,
-    abi: [
-      {
-        name: 'mint',
-        type: 'function',
-        stateMutability: 'nonpayable',
-        inputs: [],
-        outputs: [],
-      },
-    ],
+    abi: tanager101_abi,
     functionName: 'mint',
   })
   const { data, write } = useContractWrite(config)
 
-  const {
-    data: transactionReceipt,
-    isLoading,
-    isSuccess,
-  } = useWaitForTransaction({
+  const { isLoading } = useWaitForTransaction({
     hash: data?.hash,
   })
 
@@ -58,12 +46,10 @@ const MintPage = () => {
     address: tanager101_address,
     abi: tanager101_abi,
     eventName: 'Transfer',
-    listener(node, label, owner) {
-      console.log('Transfer event:', node, ', label:', label, ', owner:', owner)
-      const index = ethers.utils.formatUnits(owner, 0)
-      window.open(
-        `https://testnets.opensea.io/assets/mumbai/0x681e419ef87ed964ccd7c3b6425361df23639276/${index}`,
-      )
+    listener(from, to, tokenId) {
+      console.log('Transfer event:', from, ', to:', to, ', tokenId:', tokenId)
+      const index = ethers.utils.formatUnits(tokenId, 0)
+      window.location.href = `https://testnets.opensea.io/assets/mumbai/0x681e419ef87ed964ccd7c3b6425361df23639276/${index}`
     },
   })
 
@@ -72,10 +58,11 @@ const MintPage = () => {
     console.log('chain:', chain)
     if (chain && chain.id !== 80001) {
       alert(
-        `Unsupported Chain: ${chain.name}(${chain.id}).Supported ChainID: 80001. Mumbai Test Network.`,
+        `Unsupported Chain: ${chain.name}(${chain.id}).Supported ChainID: 80001. Please switch to Mumbai Test Network.`,
       )
       return
     }
+
     try {
       console.log('mint:', write)
       write?.()
@@ -97,11 +84,6 @@ const MintPage = () => {
           <div className={`${style.title} ${style.button}`}>
             Mint your 1st NFT
           </div>
-        </div>
-        <div hidden={!isSuccess}>
-          <a href={`https://mumbai.polygonscan.com/tx/${data?.hash}`}>
-            Check transaction
-          </a>
         </div>
       </div>
       <div

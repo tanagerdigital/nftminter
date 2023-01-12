@@ -92,8 +92,11 @@ const MintPage = () => {
             Mint your 1st NFT
           </div>
         </div>
-        <div className="flex justify-center items-center mt-8">
-          <CircularProgress hidden={!isLoading} color="success" />
+        <div
+          className="flex justify-center items-center mt-8"
+          style={{ display: `${isLoading ? 'block' : 'none'}` }}
+        >
+          <CircularProgress color="success" />
         </div>
       </div>
       <div
